@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM_Machine
 {
-    internal class Card
+    public class Card
     {
         ushort _pin;
         ulong _cardNo;

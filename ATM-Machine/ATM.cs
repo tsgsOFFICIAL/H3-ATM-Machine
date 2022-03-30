@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace ATM_Machine
 {
-    internal class ATM
+    public class ATM
     {
-        internal void Deposit(Card card, decimal amount)
+        public bool Deposit(Card card, decimal amount)
         {
+            if (amount <= 0)
+                return false;
+
             try
             {
                 card.Account.Balance += amount;
+                return true;
             }
             catch (Exception e)
             {
@@ -20,11 +24,15 @@ namespace ATM_Machine
             }
         }
 
-        internal void Withdraw(Card card, decimal amount)
+        public bool Withdraw(Card card, decimal amount)
         {
+            if (amount <= 0)
+                return false;
+
             if (card.Account.Balance - amount >= 0)
             {
                 card.Account.Balance -= amount;
+                return true;
             }
             else
             {

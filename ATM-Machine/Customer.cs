@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM_Machine
 {
-    internal class Customer
+    public class Customer
     {
         List<Account> _accounts = new List<Account>();
         string _name;
@@ -26,7 +26,7 @@ namespace ATM_Machine
             _name = name;
         }
 
-        internal Account CreateAccount(decimal balance)
+        public Account CreateAccount(decimal balance)
         {
             Account account = new Account(this, balance);
 
@@ -35,7 +35,7 @@ namespace ATM_Machine
             return account;
         }
 
-        internal Account CreateAccount(string name, decimal balance)
+        public Account CreateAccount(string name, decimal balance)
         {
             Account account = new Account(this, name, balance);
 
@@ -44,12 +44,12 @@ namespace ATM_Machine
             return account;
         }
 
-        internal List<Account> GetAccounts()
+        public List<Account> GetAccounts()
         {
             return _accounts;
         }
 
-        internal string GetName()
+        public string GetName()
         {
             return _name;
         }

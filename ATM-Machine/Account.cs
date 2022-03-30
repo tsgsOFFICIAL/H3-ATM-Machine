@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM_Machine
 {
-    internal class Account
+    public class Account
     {
         Card _card;
         decimal _balance;
@@ -42,7 +42,7 @@ namespace ATM_Machine
             _balance = balanace;
         }
 
-        internal Card GenerateCard(string name)
+        public Card GenerateCard(string name)
         {
             Card card = new Card(
                 (ushort)new Random().Next(1000, 9999 + 1),
@@ -55,7 +55,7 @@ namespace ATM_Machine
             return card;
         }
 
-        internal string? GetAccountName()
+        public string? GetAccountName()
         {
             return _accountName;
         }
