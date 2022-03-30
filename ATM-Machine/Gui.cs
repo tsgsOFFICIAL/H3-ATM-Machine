@@ -30,21 +30,30 @@ namespace ATM_Machine
             switch (Console.ReadKey(true).KeyChar)
             {
                 case '1':
+                    Console.Clear();
+                    Console.WriteLine("All customers: \n");
+
                     foreach (Customer customer in bank!.Customers)
                     {
-                        Console.WriteLine(customer.Name);
+                        Console.WriteLine($"Customer: {customer.Name}");
                         Console.WriteLine("Accounts:");
 
                         foreach (Account account in customer.Accounts)
                         {
-                            Console.WriteLine($"\t{account.Name}");
-                            Console.WriteLine($"\t{account.Balance}");
-
-                            foreach (PropertyInfo propertyInfo in account.Card.GetType().GetProperties())
+                            foreach (PropertyInfo pi in account.GetType().GetProperties())
                             {
-                                if (!propertyInfo.Name.Equals("Account"))
-                                    Console.WriteLine($"\t\t{propertyInfo.Name} - {propertyInfo.GetValue(account.Card)}");
+                                if (!pi.Name.Equals("Card"))
+                                    Console.WriteLine($"\t{pi.Name}: {pi.GetValue(account)}");
                             }
+
+                            Console.WriteLine("\tCard:");
+                            
+                            foreach (PropertyInfo pi in account.Card.GetType().GetProperties())
+                            {
+                                if (!pi.Name.Equals("Account"))
+                                    Console.WriteLine($"\t\t{pi.Name}: {pi.GetValue(account.Card)}");
+                            }
+                            Console.WriteLine();
                         }
                     }
                     break;

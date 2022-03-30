@@ -17,16 +17,17 @@ namespace ATM_Machine
             get { return _card; }
         }
 
+        public string Name
+        {
+            get { return _accountName ?? ""; }
+        }
+
         public decimal Balance
         {
             get { return _balance; }
             set { _balance = value; }
         }
 
-        public string Name
-        {
-            get { return _accountName ?? ""; }
-        }
 
         public Account(Customer customer, string accountName, decimal balanace)
         {
